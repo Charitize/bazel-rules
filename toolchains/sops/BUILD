@@ -38,10 +38,34 @@ toolchain(
 )
 
 toolchain(
+    name = "sops_windows_toolchain",
+    target_compatible_with = [
+        "@bazel_tools//platforms:windows",
+    ],
+    toolchain = ":sops_windows",
+    toolchain_type = ":toolchain_type",
+)
+
+platform(
+    name = "intel_mac",
+    constraint_values = [
+        "@platforms//os:osx",
+        "@platforms//cpu:x86_64"
+    ],
+)
+
+platform(
+    name = "m1_mac",
+    constraint_values = [
+        "@platforms//os:osx",
+        "@platforms//cpu:arm"
+    ],
+)
+
+toolchain(
     name = "sops_osx_toolchain",
     target_compatible_with = [
-        "@platforms//os:osx",
-        "@platforms//cpu:x86_64",
+        "@platforms//m1_mac"
     ],
     toolchain = ":sops_darwin",
     toolchain_type = ":toolchain_type",
@@ -50,18 +74,9 @@ toolchain(
 toolchain(
     name = "sops_osx_m1_toolchain",
     target_compatible_with = [
-        "@platforms//os:osx",
-        "@platforms//cpu:arm",
+        "@platforms//m1_mac",
     ],
     toolchain = ":sops_darwin_m1",
     toolchain_type = ":toolchain_type",
 )
 
-toolchain(
-    name = "sops_windows_toolchain",
-    target_compatible_with = [
-        "@bazel_tools//platforms:windows",
-    ],
-    toolchain = ":sops_windows",
-    toolchain_type = ":toolchain_type",
-)
