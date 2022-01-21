@@ -65,7 +65,7 @@ platform(
 toolchain(
     name = "sops_osx_toolchain",
     target_compatible_with = [
-        "@platforms//m1_mac"
+        ":intel_mac"
     ],
     toolchain = ":sops_darwin",
     toolchain_type = ":toolchain_type",
@@ -74,7 +74,7 @@ toolchain(
 toolchain(
     name = "sops_osx_m1_toolchain",
     target_compatible_with = [
-        "@platforms//m1_mac",
+        ":m1_mac",
     ],
     toolchain = ":sops_darwin_m1",
     toolchain_type = ":toolchain_type",
